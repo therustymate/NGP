@@ -1,7 +1,7 @@
 # NGP (Native Gadget Programming)
 NGP and the NGP compiler are currently under development, and **this document addresses theoretical concepts only.**
 
-Created by @therustymate (2025-07/04-07:13 PM) - New Zealand, Auckland Timeline
+Created by @therustymate
 
 ## Disclaimer
 
