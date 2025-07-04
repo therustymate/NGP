@@ -1,4 +1,5 @@
 # NGP (Native Gadget Programming)
+NGP and the NGP compiler are currently under development, and **this document addresses theoretical concepts only.**
 
 ## Disclaimer
 
