@@ -1,5 +1,7 @@
 # NGP (Native Gadget Programming)
-NGP and the NGP compiler are currently under development, and **this document addresses theoretical concepts only.**
+NGP and the NGP compiler is now available (`ngp.py`)
+
+<del>NGP and the NGP compiler are currently under development, and **this document addresses theoretical concepts only.**</del>
 
 Created by @therustymate
 
@@ -72,17 +74,11 @@ Thus, NGP-based malware exhibits a high evasion rate against traditional YARA ru
 ## Major Differences and Implications Between Encrypted Shellcode and NGP
 
 1. **Difficulty of Automated Full Content Analysis and Detection**  
-* Encrypted shellcode exists wholly within the dropper in encrypted form; antivirus attempts to decrypt or analyze memory dumps at runtime.  
 * NGP fragments malicious code across many legitimate system files, forcing antivirus to access and reconstruct fragments from numerous files, a complex and resource-intensive task.  
 * This leads to overall system performance degradation during detection, undesirable for users or administrators.  
 * For attackers, increased detection cost and resource consumption degrade defenders’ detection and response capabilities, enhancing attack success.
 
-2. **Reduced Malware Size and Network Traffic**  
-* NGP reuses code fragments from existing legitimate files, greatly reducing the pure size of malware to be delivered.  
-* This compression-like effect reduces bandwidth and transmission time, lowering the chance of detection.  
-* Less network traffic reduces suspicion by intrusion detection systems (IDS), favoring stealthy attacks.
-
-3. **Enhanced Static Analysis and Signature Detection Evasion**  
+2. **Enhanced Static Analysis and Signature Detection Evasion**  
 * Encrypted shellcode is hard to detect before decryption, but NGP lacks a complete malicious signature in any single executable file, virtually neutralizing signature-based detection.  
 * Fragmented malware spread over multiple legitimate files requires full assembly for detection, practically impossible without full context.
 
