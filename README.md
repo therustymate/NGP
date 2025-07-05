@@ -34,9 +34,10 @@ This technology leverages byte fragments from binaries already present on the sy
 
 1. **Shellcode Analysis and Mapping** - The NGP compiler analyzes the provided shellcode and searches for **matching or similar byte sequences** within default Windows system files (e.g., executables, DLLs, other binary files).
 2. **Fragment Location Storage** - When matching byte fragments are found, metadata such as **file path**, **file offset**, and **length** are recorded and hardcoded into the final dropper binary.
-3. **Handling Missing Bytes** - If certain bytes cannot be found within system files, those fragments are stored in an **encrypted form in a specific section of the executable**.
-4. **Dynamic Building at Runtime** - When the dropper executes, it opens the target files, reads the necessary byte fragments, decrypts encrypted fragments, and sequentially **rebuilds the shellcode in memory**.
-5. **Shellcode Execution** - Finally, the reconstructed shellcode is loaded and executed in memory using APIs like `VirtualAlloc`, `memcpy`, `VirtualProtect`, or via ROP-like mechanisms.
+3. <del>**Dynamic Building at Runtime** - When the dropper executes, it opens the target files, reads the necessary byte fragments, decrypts encrypted fragments, and sequentially **rebuilds the shellcode in memory**.</del>
+4. <del>**Shellcode Execution** - Finally, the reconstructed shellcode is loaded and executed in memory using APIs like `VirtualAlloc`, `memcpy`, `VirtualProtect`, or via ROP-like mechanisms.</del>
+
+`NGP Dropper` is not planned for development due to security issues.
 
 ---
 
