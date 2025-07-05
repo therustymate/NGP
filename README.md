@@ -1,6 +1,8 @@
 # NGP (Native Gadget Programming)
 NGP and the NGP compiler is now available (`ngp.py`)
 
+The NGP compiler has successfully mapped the `msfvenom` payload and bypassed antivirus detection (EDR **not** tested).
+
 <del>NGP and the NGP compiler are currently under development, and **this document addresses theoretical concepts only.**</del>
 
 Created by @therustymate
