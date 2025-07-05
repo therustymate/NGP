@@ -68,7 +68,6 @@ However, NGP is likely to evade YARA detection due to:
 
 * **Distributed and Reassembled Malware Structure** – NGP splits malware into fragments that reference system binaries or are stored encrypted, reassembled only at runtime, meaning unique continuous byte patterns or strings do not exist within a single executable. This complicates YARA’s pattern matching.
 * **Use of Legitimate System File Code** – Since malware fragments match bytes inside legitimate system files, writing YARA rules based on these fragments risks false positives and limits rule application.
-* **Encryption and Encoding** – Some malware fragments are stored encrypted inside the dropper and decrypted only at runtime, preventing detection by static YARA rules.
 
 Thus, NGP-based malware exhibits a high evasion rate against traditional YARA rules, requiring dynamic analysis or memory behavior-based detection techniques for effective identification.
 
