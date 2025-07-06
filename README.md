@@ -3,6 +3,8 @@ NGP and the NGP compiler is now available (`ngp.py`)
 
 The NGP compiler has successfully mapped the `msfvenom` payload and bypassed antivirus detection (EDR **not** tested).
 
+The NGP compiler only provides metadata and is intentionally designed not to include a dropper that reconstructs and loads the actual shellcode.
+
 <del>NGP and the NGP compiler are currently under development, and **this document addresses theoretical concepts only.**</del>
 
 Created by @therustymate
