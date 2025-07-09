@@ -1,7 +1,9 @@
 # NGP (Native Gadget Programming)
 NGP and the NGP compiler is now available (`ngp.py`)
 
-The NGP compiler has successfully mapped the `msfvenom` payload and bypassed antivirus detection (EDR **not** tested).
+The NGP compiler has successfully mapped the `msfvenom` payload and bypassed antivirus detection <del>(EDR **not** tested)</del>.
+
+The result of EDR evasion can be found in the **NGP Dropper Test** section.
 
 The NGP compiler only provides metadata and is intentionally designed not to include a dropper that reconstructs and loads the actual shellcode.
 
@@ -112,3 +114,5 @@ NGP offers strengths in evading static and signature-based detection but faces t
 <img src="Windows Defender Behavior Detection.png">
 
 **Static detection by antivirus was completely bypassed**, but behavior-based detection failed to be evaded due to the use of the well-known **Meterpreter** payload.
+
+---
