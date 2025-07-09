@@ -11,8 +11,6 @@ The NGP compiler only provides metadata and is intentionally designed not to inc
 
 Created by @therustymate
 
-<video src="./NGP Dropper Test.mp4"></video>
-
 Youtube Video: [https://youtu.be/1r0l6spXKCI](https://youtu.be/1r0l6spXKCI)
 
 ## Disclaimer
