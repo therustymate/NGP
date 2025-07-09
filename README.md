@@ -13,6 +13,8 @@ Created by @therustymate
 
 <video src="./NGP Dropper Test.mp4"></video>
 
+Youtube Video: [https://youtu.be/1r0l6spXKCI](https://youtu.be/1r0l6spXKCI)
+
 ## Disclaimer
 
 This document and all associated materials are provided strictly for **legitimate security research, education, and authorized antivirus detection capability testing purposes only.**
