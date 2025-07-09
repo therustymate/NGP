@@ -19,6 +19,7 @@ EXTENSION_DICT = {
 TARGET_SHELLCODE_PATH : str = ""
 TARGET_SCAN_PATH : str      = ""
 TARGET_EXTENSIONS : str     = ""
+TARGET_OUTPUT_PATH : str    = ""
 SCAN_FILES = []
 
 # -----------------------------------------------------------------
@@ -227,9 +228,9 @@ def start():
 
     print()
 
-    print("[+] JSON List:")
+    data = ""
 
-    print("[")
+    data += "[\n"
     for i, chunk in enumerate(mapped_chunks):
         item = {
             "file": chunk["file"].replace("\\", "/"),
@@ -238,13 +239,20 @@ def start():
             "chunk": chunk["chunk"].hex()
         }
         comma = "," if i < len(mapped_chunks) - 1 else ""
-        print(f"  {json.dumps(item)}{comma}")
-    print("]")
+        data += (f"  {json.dumps(item)}{comma}\n")
+    data += "]"
+
+    fp = open(TARGET_OUTPUT_PATH, "w")
+    fp.write(data)
+    fp.close()
+
+    print(f"[+] Output saved: {TARGET_OUTPUT_PATH}")
 
 def main():
     global TARGET_SHELLCODE_PATH
     global TARGET_SCAN_PATH
     global TARGET_EXTENSIONS
+    global TARGET_OUTPUT_PATH
 
     parser = ArgumentParser(
         prog="NGP Compiler",
@@ -271,6 +279,12 @@ def main():
         type=str
     )
     parser.add_argument(
+        "-o", "--output",
+        help="output file path",
+        required=True,
+        type=str
+    )
+    parser.add_argument(
         "--extensions",
         help="specify file extensions to scan (comma separated, default: .dll,.exe,.sys,.com,.bin)",
         type=str,
@@ -282,6 +296,7 @@ def main():
     TARGET_SHELLCODE_PATH   = os.path.join(os.getcwd(), str(args.target))
     TARGET_SCAN_PATH        = str(args.path)
     TARGET_EXTENSIONS       = str(args.extensions)
+    TARGET_OUTPUT_PATH      = str(args.output)
 
     start()
 
