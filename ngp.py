@@ -222,9 +222,9 @@ def start():
     found_sha1   = hashlib.sha1(found_shellcode_bytes).hexdigest()
     found_sha256 = hashlib.sha256(found_shellcode_bytes).hexdigest()
 
-    print(f"\t* {'MD5:':<{label_width}} {found_md5:<{hash_width}} {'[MATCH]' if found_md5 == original_md5 else ''}")
-    print(f"\t* {'SHA1:':<{label_width}} {found_sha1:<{hash_width}} {'[MATCH]' if found_sha1 == original_sha1 else ''}")
-    print(f"\t* {'SHA256:':<{label_width}} {found_sha256:<{hash_width}} {'[MATCH]' if found_sha256 == original_sha256 else ''}")
+    print(f"\t* {'MD5:':<{label_width}} {found_md5:<{hash_width}} {'[MATCH]' if found_md5 == original_md5 else '[MISMATCH]'}")
+    print(f"\t* {'SHA1:':<{label_width}} {found_sha1:<{hash_width}} {'[MATCH]' if found_sha1 == original_sha1 else '[MISMATCH]'}")
+    print(f"\t* {'SHA256:':<{label_width}} {found_sha256:<{hash_width}} {'[MATCH]' if found_sha256 == original_sha256 else '[MISMATCH]'}")
 
     print()
 
