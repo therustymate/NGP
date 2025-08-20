@@ -41,7 +41,7 @@ This technology leverages byte fragments from binaries already present on the sy
 ## Operation Process
 
 1. **Shellcode Analysis and Mapping** - The NGP compiler analyzes the provided shellcode and searches for **matching or similar byte sequences** within default Windows system files (e.g., executables, DLLs, other binary files).
-2. **Fragment Location Storage** - When matching byte fragments are found, metadata such as **file path**, **file offset**, and **length** are recorded and hardcoded into the final dropper binary.
+2. **Fragment Location Storage** - When matching byte fragments are found, metadata such as **file path**, **file offset**, and **length** are recorded into the final dropper binary.
 3. **Dynamic Building at Runtime** - When the dropper executes, it opens the target files, reads the necessary byte fragments, and sequentially **rebuilds the shellcode in memory**.
 4. **Shellcode Execution** - Finally, the reconstructed shellcode is loaded and executed in memory using APIs like `VirtualAlloc`, `memcpy`
 
@@ -50,9 +50,11 @@ This technology leverages byte fragments from binaries already present on the sy
 Because the dropper does not contain fully executable shellcode but only incomplete fragment information,
 this approach is highly effective at evading signature-based antivirus detection.
 
-Users can also partially evade detection of complete malicious binaries performing harmful actions via NGP.
+Users can also partially evade detection of complete malicious binaries performing certain actions via NGP.
 The NGP compiler analyzes the provided binary, maps portions to byte fragments within legitimate system files.
 At runtime, these fragments are reassembled in memory and loaded directly via techniques like shellcode reflective loading, effectively bypassing static antivirus analysis.
+
+If the NGP compiler is skillfully utilized to compile using files that exist only on the target system, it **passively gains the ability to evade malware analysis environments**. If no metadata is leaked, then in theory, an **analyst would have to perfectly replicate the entire system** in order to conduct a proper analysis.
 
 ## Signature-Based Detection Evasion Mechanism
 
@@ -100,7 +102,6 @@ NGP offers strengths in evading static and signature-based detection but faces t
 2. **Limitations in Evading Memory-Based Detection (EDR)**
 * Runtime behaviors such as API calls, RWX (Read/Write/Execute) memory allocations, and code injections are monitored by modern EDR solutions.
 * System calls like `VirtualAlloc`, `WriteProcessMemory`, `CreateRemoteThread`, and `NtResumeThread` are vulnerable to behavioral detection.
-* While NGP can hide some activities using ROP techniques, **(EDR-evasive NGP is still under development)**, full evasion of dynamic detection remains difficult.
 
 3. **Instability Due to Legitimate File Changes**
 * Updates or patches to system files change fragment offsets, causing assembly failures or malfunctions.
