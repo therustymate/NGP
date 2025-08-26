@@ -64,15 +64,14 @@ def parse_chunk(file : str, shellcode_bytes : bytes):
             max_offset = -1
             max_chunk = b""
 
-            for length in range(1, len(shellcode_bytes) + 1):
+            for length in range(len(shellcode_bytes), 0, -1):
                 chunk = shellcode_bytes[:length]
                 position = MMAP_HANDLER.find(chunk)
-                if position == -1:
-                    break
-                else:
+                if position != -1:
                     max_len = length
                     max_offset = position
                     max_chunk = chunk
+                    break
 
             if max_len > 0:
                 return {
@@ -100,6 +99,12 @@ def map_shellcode(shellcode_bytes: bytes, scan_files: list):
             idx += found["length"]
         else:
             print(f"[-] Unmapped bytes at index {idx}: {shellcode_bytes[idx:].hex()}")
+            chunks.append({
+                "file": "undefined",
+                "offset": 0,
+                "length": len(shellcode_bytes) - idx,
+                "chunk": shellcode_bytes[idx:]
+            })
             break
 
     return chunks
@@ -169,32 +174,11 @@ def start():
 
     # -----------------------------------------------------------------
 
-    print(f"[+] Checking File Access Permissions:")
-
-    failed = []
-
-    for file in SCAN_FILES:
-        try:
-            fp = open(file, "rb")
-            fp.close()
-        except:
-            failed.append(file)
-
-    for file in failed:
-        SCAN_FILES.remove(file)
-
-    print(f"\t* Accessible: {len(SCAN_FILES):>12,} files")
-    print(f"\t* Inaccessible: {len(failed):>10,} files")
-
-    print()
-
-    # -----------------------------------------------------------------
-
     mapped_chunks = map_shellcode(shellcode_bytes, SCAN_FILES)
 
     print("\n=== Final Mapped Chunks ===")
-    print(f"{'File Path':<80} {'Offset':>8} {'Length':>8}  Chunk (hex)")
-    print("-" * 120)
+    print(f"{'File Path':<100} {'Offset':>8} {'Length':>8}  Chunk (hex)")
+    print("-" * 150)
 
     found_shellcode = ""
 
@@ -203,7 +187,7 @@ def start():
         offset = chunk["offset"]
         length = chunk["length"]
         hex_chunk = chunk["chunk"].hex()
-        print(f"{path:<80} {offset:>8} {length:>8}  {hex_chunk}")
+        print(f"{path:<100} {offset:>8} {length:>8}  {hex_chunk}")
         found_shellcode += hex_chunk
 
     print()
