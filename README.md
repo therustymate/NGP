@@ -33,7 +33,7 @@ By reading or using this document, you are deemed to have accepted all the above
 
 ## NGP Operation Principle
 
-**NGP**, or **Native Gadget Programming**, is a novel technique designed to execute malicious code without embedding the actual shellcode within the shellcode dropper.
+**NGP**, or **Native Gadget Programming**, is a novel technique designed to execute shellcode without embedding the actual shellcode within the shellcode dropper.
 This technology leverages byte fragments from binaries already present on the system to **reconstruct and execute shellcode in memory**, effectively evading antivirus detection.
 
 ---
