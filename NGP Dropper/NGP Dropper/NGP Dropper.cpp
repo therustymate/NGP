@@ -1,4 +1,6 @@
 #include <Windows.h>
+#include <bcrypt.h>
+#include <winternl.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
