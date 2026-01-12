@@ -7,7 +7,6 @@
 #include <vector>
 #include <map>
 #include <regex>
-
 #pragma comment(lib, "bcrypt.lib")
 
 void print_hash(const BYTE* hash, DWORD hash_len) {
