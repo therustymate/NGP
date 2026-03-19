@@ -1,16 +1,6 @@
 # NGP (Native Gadget Programming)
 New Anti-Virus Bypass Technique Research
 
----
-
-NGP and the NGP compiler is now available (`ngp.py`)
-
-The NGP compiler has successfully mapped the `msfvenom` payload and bypassed antivirus detection.
-
-The result of EDR evasion can be found in the **NGP Dropper Test** section.
-
-The NGP compiler only provides metadata and is intentionally designed not to include a dropper that reconstructs and loads the actual shellcode.
-
 Created by @therustymate
 
 Youtube Video: [https://youtu.be/1r0l6spXKCI](https://youtu.be/1r0l6spXKCI)
